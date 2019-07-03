@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "SDL2/include/SDL.h"
+#include <SDL.h>
+#include <SDL_image.h>
 
 int			main(int argc, char *argv[])
 {
@@ -9,6 +10,7 @@ int			main(int argc, char *argv[])
 	SDL_Surface *screen;
 	SDL_Surface *img;
 	SDL_Surface *zozor;
+	SDL_Surface *sapin;
 	SDL_Rect position;
 	SDL_Rect positionZozor;
 
@@ -54,7 +56,7 @@ int			main(int argc, char *argv[])
 
 	position.x = 0;
 	position.y = 0;
-	img = SDL_LoadBMP("images/lac_en_montagne.bmp");
+	img = IMG_Load("images/lac_en_montagne.bmp");
 	if (img == NULL)
 	{
 		fprintf(stderr, "SDL_LoadBMP Error : %s\n", SDL_GetError());
@@ -86,6 +88,19 @@ int			main(int argc, char *argv[])
 	SDL_SetSurfaceBlendMode(zozor, SDL_BLENDMODE_BLEND);
 	SDL_BlitSurface(zozor, NULL, screen, &positionZozor);
 
+
+	position.x = 200;
+	position.y = 200;
+	/*sapin = IMG_Load("images/sapin.png");
+	if (sapin == NULL)
+	{
+		fprintf(stderr, "IMG_Load Error : %s\n", SDL_GetError());
+		SDL_DestroyWindow(win);
+		SDL_Quit();
+		exit(EXIT_FAILURE);
+	}
+	SDL_BlitSurface(sapin, NULL, screen, &position);
+*/
 
 	if (SDL_UpdateWindowSurface(win) != 0)
 	{
